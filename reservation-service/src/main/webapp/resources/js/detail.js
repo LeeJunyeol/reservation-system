@@ -13,12 +13,12 @@ require([
     "jquery", "Handlebars", "Flicking", "Lazy"
 ], function($, Handlebars, Flicking, Lazy){
 
-    const CURRENT_URL = window.location.href;
+    var CURRENT_URL = window.location.href;
 
     var productName;
     var productDesc;
 
-    var ProductDetail = (function(){
+    var ProductDetail = (function(F){
         var productId = $('#container').data('id');
 
         var $mainImageList = $('#container ul.visual_img');
@@ -123,23 +123,23 @@ require([
 
                 $map.on('click', function(e){
                     e.preventDefault();
-                    url = 'http://map.naver.com/index.nhn?enc=utf8&level=2&lng='+ point.x +'&lat='+ point.y
+                    var url = 'http://map.naver.com/index.nhn?enc=utf8&level=2&lng='+ point.x +'&lat='+ point.y
                         +'&pinTitle=' + $('.store_addr.addr_detail').html() +'&pinType=SITE';
                     window.open(url);
                 });
 
-                var pathUrl = 'http://map.naver.com/?&enc=utf8&dtPathType=0&menu=route&mapMode=0&pathType=1'
-                    +'&elng=' + point.x
-                    +'&elat=' + point.y
-                    +'&eText=' + $('.store_addr.addr_detail').html();
-                $pathBtn.on('click', function(e){
-                    e.preventDefault();
-                    url = pathUrl;
-                    window.open(url);
-                });
-                $gotoPathBtn.attr('href', pathUrl);
+            var pathUrl = 'http://map.naver.com/?&enc=utf8&dtPathType=0&menu=route&mapMode=0&pathType=1'
+                +'&elng=' + point.x
+                +'&elat=' + point.y
+                +'&eText=' + $('.store_addr.addr_detail').html();
+            $pathBtn.on('click', function(e){
+                e.preventDefault();
+                var url = pathUrl;
+                window.open(url);
             });
-        };
+            $gotoPathBtn.attr('href', pathUrl);
+        });
+    };
 
         var getDisplayInfoAjax = function() {
             $.ajax({

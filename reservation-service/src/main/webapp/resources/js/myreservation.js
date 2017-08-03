@@ -197,14 +197,14 @@ require([
         }
     });
 
-    var MyReservationModule = (function(){
-        const PATH_NAME = window.location.pathname;
-        const RESERVATION_TYPES = {
-            NOT_USED_RESERVATION : "1",
-            CONFIRMED_RESERVATION : "2",
-            USED_RESERVATION : "3",
-            CANCELD_RESERVATION : "4"
-        };
+var MyReservationModule = (function(){
+    var PATH_NAME = window.location.pathname;
+    var RESERVATION_TYPES = {
+        NOT_USED_RESERVATION : "1",
+        CONFIRMED_RESERVATION : "2",
+        USED_RESERVATION : "3",
+        CANCELD_RESERVATION : "4"
+    };
 
         var apiBaseUrl = "/api/reservations";
         var userId = $('body').data('user-id');
