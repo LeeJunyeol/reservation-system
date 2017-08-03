@@ -129,6 +129,6 @@
 	</div>
 	</footer>
 	<script data-main="/resources/js/mainPage.js"
-	 src="/resources/js/node_modules/requirejs/require.js"></script>
+	 src="/node_modules/requirejs/require.js"></script>
 </body>
 </html>

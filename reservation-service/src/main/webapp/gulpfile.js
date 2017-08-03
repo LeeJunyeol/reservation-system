@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
 var eslint = require('gulp-eslint');
+var stripDebug = require('gulp-strip-debug');
 
 var src = 'resources';
 var dist = 'dist';
@@ -13,6 +14,7 @@ var paths = {
 
 gulp.task('fail-immediately', () => {
     return gulp.src(paths.js)
+    	.pipe(stripDebug())
         .pipe(eslint())
         // format one at time since this stream may fail before it can format them all at the end
         .pipe(eslint.formatEach())
@@ -54,9 +56,9 @@ gulp.task('combine-js', function () {
                 'no-unreachable': 2
             },
 
-            globals: ['$', 'window', 'Handlebars', 'eg', 'document'],
+            globals: ['$', 'Handlebars', 'eg'],
 
-            envs: ['node']
+            envs: ['browser']
         }))
         .pipe(eslint.format())
         .pipe(concat('script.js'))
@@ -167,4 +169,4 @@ gulp.task('load-config-shorthand', () => {
 
 //기본 task 설정
 gulp.task('default', [
-    'fail-immediately', 'combine-js' ]);
+    'combine-js' ]);

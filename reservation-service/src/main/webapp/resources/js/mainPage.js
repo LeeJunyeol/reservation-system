@@ -2,8 +2,8 @@
 
 require.config({
     paths: {
-        "jquery" : "node_modules/jquery/dist/jquery",
-        "Handlebars" : "node_modules/handlebars/dist/handlebars",
+        "jquery" : "../../node_modules/jquery/dist/jquery",
+        "Handlebars" : "../../node_modules/handlebars/dist/handlebars",
         "Flicking" : "flicking"
     }
 });
