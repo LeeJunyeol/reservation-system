@@ -1,10 +1,6 @@
 # 네이버 예약 서비스 만들기
 이 프로젝트는 기본적인 웹프로그래밍 지식으로 Front-End에서 Back-End까지 전문화된 개발을 한다.
 
-# Branches
-- [C_YG]: 개발 완료
-- [JPA]: 심화주제인 JPA 적용한 네이버 예약 서비스
-
 
 # YG 코딩 컨밴션
 ## [FE]
@@ -45,8 +41,7 @@
 | 프로모션 목록         | /api/products/promotions        | GET    |              |             | { [ { id=[int], name=[str], description=[str], placeName=[str], mainImageId=[int] }, ... ] } |
 | 상품 상세 정보        | /api/products/:id               | GET    | id=[integer] |             | { nema=[str], images=[[int], ...], description=[str], event=[str], content=[str], subImage=[int], placeName=[str], placeLot=[str], placeStreet=[str], tel=[str], homepage=[str], email=[str], reviewCount=[int], reviewTotalScore=[int] } |
 | 상품 예약 정보        | /api/proudcts/:id/reservation   | GET    | id=[integer] |             | { name=[str], placeName=[str], displayStart=[Date], displayEnd=[Date], observationTime=[str], mainImageId=[int] } |
-| 상품 리뷰 보기   | /api/products/:id/reviews?limit=:limit&page=:page | GET    | id=[integer], limit=[integer], page=[integer] |             | { [ { review=[str], score=[int], modifyDate=[Date], userEmail=[str] }, ... ] } |
-| 상품 가격 정보        | /api/products/:id/prices        | GET    | id=[Integer] |             | { [ {productId=[int], priceType=[int], price=[int], discountRate=[int] }, ... ] } |
+| 상품 리뷰 보기   | /api/products/:id/reviews?limit=:limit&page=:page | GET    | id=[integer], limit=[integer], page=[integer] |             | { [ { review=[str], score=[int], modifyDate=[Date], userEmail=[str] }, ... ] } |  
 
 ## Category  
  | Title              | URL                                     | Method | URL parms                    |  Data params | Response |
@@ -70,5 +65,10 @@
 ## Image
 | Title          | URL         | Method | URL parms |  Data params | Response |
 |----------------|-------------|--------|-----------|--------------|----------|
-| 리뷰 사진 등록 | /api/images | POST   |           |              |           |
-| 사진 조회     | /api/images/:id| GET  | id=[Integer]  |          | {image=[file]} |
+| 리뷰 사진 등록 | /api/images | POST   |           |              |          |
+
+
+## User
+| Title   | URL           | Method | URL parms |  Data params | Response |
+|---------|---------------|--------|-----------|--------------|----------|
+| 내 정보 | /api/users/my | GET    |           |              |          | |

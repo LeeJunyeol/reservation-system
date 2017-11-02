@@ -2,7 +2,6 @@
   "name": "reservation",
   "version": "1.0.0",
   "description": "",
-  "main": "mainPage.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +14,7 @@
     "requirejs": "^2.3.4"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "webpack": "^3.8.1"
   }
 }

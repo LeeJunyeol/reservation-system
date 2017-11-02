@@ -5,7 +5,8 @@ require.config({
     "egComponent": "../node_modules/@egjs/component/dist/component.min",
     "asyncRequest": "../asyncRequest",
     "util": "../util",
-    "flicking": "../flicking"
+    "flicking": "../flicking",
+    "productlist": "productlist"
   }
 });
 
