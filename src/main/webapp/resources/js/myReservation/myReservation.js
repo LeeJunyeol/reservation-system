@@ -1,7 +1,6 @@
 require.config({
   paths: {
     "jquery": "../node_modules/jquery/dist/jquery.min",
-    "Handlebars": "../node_modules/handlebars/dist/handlebars.min",
     "asyncRequest": "../asyncRequest"
   }
 });
