@@ -368,6 +368,7 @@
     </article>
     {{/each}}
   </script>
-  <script src="/resources/js/dist/myReservation.js"></script>
+  <script data-main="/resources/js/myReservation/myReservation.js" 
+    src="/resources/js/node_modules/requirejs/require.js" ></script>
 </body>
 </html>

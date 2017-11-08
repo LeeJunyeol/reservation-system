@@ -107,7 +107,8 @@
         </li>
       {{/each}}
     </script>
-    <script src="/resources/js/dist/mainPage.js"></script>
+    <script data-main="/resources/js/mainPage/mainPage.js" 
+    src="/resources/js/node_modules/requirejs/require.js" ></script>
 </body>
 
 </html>

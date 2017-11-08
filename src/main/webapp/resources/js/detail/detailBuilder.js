@@ -1,5 +1,5 @@
 define(["jquery", "Handlebars", "egComponent", "util", "asyncRequest", "naverMap", "handlebarsWrapper", "formatter", "reviewMapper"],
-  function($, Handlebars, egComponent, Util, ajaxRequest, NaverMap, HandlebarsWrapper, Formatter, ReviewMapper) {
+  function ($, Handlebars, egComponent, Util, ajaxRequest, NaverMap, HandlebarsWrapper, Formatter, ReviewMapper) {
     "use strict";
 
     var productId = window.location.pathname.split("/")[2];

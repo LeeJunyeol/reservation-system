@@ -257,6 +257,7 @@
     </script>
     <script type="text/javascript"
       src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=${clientId}&submodules=geocoder"></script>
-    <script src="/resources/dist/detail.js"></script>
+      <script data-main="/resources/js/detail/detail.js" 
+      src="/resources/js/node_modules/requirejs/require.js" ></script>
 </body>
 </html>

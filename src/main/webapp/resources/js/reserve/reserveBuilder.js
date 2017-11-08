@@ -1,39 +1,40 @@
-define(["productModel", "asyncRequest", "Handlebars", "../handlebarsWrapper"],
-  function(ProductModel, ajaxRequest, Handlebars, HandlebarsWrapper) {
-    "use strict";
+import ProductModel from "./productModel";
+import ajaxRequest from "../asyncRequest";
+import HandlebarsWrapper from "../handlebarsWrapper";
 
-    var productId = $("body").data("id");
-    var PRODUCTS_API_URL = "/api/products/" + productId;
+"use strict";
 
-    var product = null;
-    var templates = [];
+var productId = $("body").data("id");
+var PRODUCTS_API_URL = "/api/products/" + productId;
 
-    function init() {
-      return get().then(setPage);
-    }
+var product = null;
+var templates = [];
 
-    function get() {
-      return $.when(ajaxRequest(PRODUCTS_API_URL + "/reservation", "GET"),
-        ajaxRequest(PRODUCTS_API_URL + "/prices", "GET"));
-    }
+function init() {
+  return get().then(setPage);
+}
 
-    function setPage(productReservationAjaxResult, priceAjaxResult) {
-      var productDetail = productReservationAjaxResult[0];
-      var productPrice = priceAjaxResult[0];
+function get() {
+  return $.when(ajaxRequest(PRODUCTS_API_URL + "/reservation", "GET"),
+    ajaxRequest(PRODUCTS_API_URL + "/prices", "GET"));
+}
 
-      product = new ProductModel(productDetail, productPrice);
+function setPage(productReservationAjaxResult, priceAjaxResult) {
+  var productDetail = productReservationAjaxResult[0];
+  var productPrice = priceAjaxResult[0];
 
-      HandlebarsWrapper("#product-detail-template", ".section_product_detail", product.getDetail());
-      HandlebarsWrapper("#booking-ticket-template", ".section_booking_ticket", product.getPrices());
-      HandlebarsWrapper("#booking-form-template", ".inline_form.last  .inline_control", product.getDetail());
-    }
+  product = new ProductModel(productDetail, productPrice);
 
-    function getProduct() {
-      return product;
-    }
+  HandlebarsWrapper("#product-detail-template", ".section_product_detail", product.getDetail());
+  HandlebarsWrapper("#booking-ticket-template", ".section_booking_ticket", product.getPrices());
+  HandlebarsWrapper("#booking-form-template", ".inline_form.last  .inline_control", product.getDetail());
+}
 
-    return {
-      init: init,
-      getProduct: getProduct
-    };
-  });
+function getProduct() {
+  return product;
+}
+
+export default {
+  init,
+  getProduct
+};

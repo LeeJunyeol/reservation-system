@@ -1,6 +1,7 @@
 require.config({
   paths: {
     "jquery": "../node_modules/jquery/dist/jquery.min",
+    "Handlebars": "../node_modules/handlebars/dist/handlebars.min",
     "egComponent": "../node_modules/@egjs/component/dist/component.min",
     "asyncRequest": "../asyncRequest",
     "util": "../util",
@@ -11,15 +12,15 @@ require.config({
 });
 
 require([
-  "jquery", "egComponent", "flicking", "productDetail", "detailBuilder"
-], function($, egComponent, Flicking, ProductDetail, DetailBuilder) {
+  "jquery", "Handlebars", "egComponent", "flicking", "productDetail", "detailBuilder"
+], function ($, Handlebars, egComponent, Flicking, ProductDetail, DetailBuilder) {
 
   function init() {
     var options = {
       popupReviewImageViewerCallback: initImageViewerFlicking
     };
     DetailBuilder.init()
-      .done(function(data) {
+      .done(function (data) {
         options.productData = data;
 
         ProductDetail.init(options);
@@ -48,7 +49,7 @@ require([
       isAuto: false
     };
     var imageViewerFlicking = new Flicking($("#imageviewer"), options);
-    imageViewerFlicking.on("afterAnimate", function(e) {
+    imageViewerFlicking.on("afterAnimate", function (e) {
       $(".index_image").text(e.index);
     });
   }

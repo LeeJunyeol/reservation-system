@@ -36,7 +36,7 @@ define(["jquery", "Handlebars", "egComponent", "util", "asyncRequest"],
       page = 1;
 
       $(".more").removeClass("hide");
-      $(".event_tab_lst li.item[data-   category=" + categoryIdx + "] a.anchor").removeClass("active");
+      $(".event_tab_lst li.item[data-category=" + categoryIdx + "] a.anchor").removeClass("active");
       categoryIdx = $ele.data("category");
       $ele.find(".anchor").addClass("active");
 

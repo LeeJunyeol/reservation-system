@@ -1,23 +1,11 @@
-require.config({
-  paths: {
-    "jquery": "../node_modules/jquery/dist/jquery.min",
-    "Handlebars": "../node_modules/handlebars/dist/handlebars.min",
-    "egComponent": "../node_modules/@egjs/component/dist/component.min",
-    "asyncRequest": "../asyncRequest",
-    "util": "../util"
-  }
-});
+import BookingController from "./bookingController";
+import ReserveBuilder from "./reserveBuilder";
 
-require([
-  "jquery", "bookingController", "reserveBuilder"
-], function($, BookingController, ReserveBuilder) {
-  function init() {
-    ReserveBuilder.init()
-      .then(function(){
-        BookingController.init();
-      });
-  }
+function init() {
+  ReserveBuilder.init()
+    .then(function () {
+      BookingController.init();
+    });
+}
 
-  $(init());
-
-});
+$(init());

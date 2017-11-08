@@ -119,6 +119,7 @@
       </li>
     {{/each}}
   </script>
-  <script src="/resources/js/dist/reviewWrite.js"></script>
+  <script data-main="/resources/js/reviewWrite/reviewWrite.js" 
+  src="/resources/js/node_modules/requirejs/require.js" ></script>
 </body>
 </html>

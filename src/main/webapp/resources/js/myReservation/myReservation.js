@@ -1,13 +1,14 @@
 require.config({
   paths: {
     "jquery": "../node_modules/jquery/dist/jquery.min",
+    "Handlebars": "../node_modules/handlebars/dist/handlebars.min",
     "asyncRequest": "../asyncRequest"
   }
 });
 
 require([
   "jquery", "asyncRequest", "../handlebarsWrapper", "../formatter", "cards"
-], function($, ajaxRequest, HandlebarsWrapper, Formatter, cards) {
+], function ($, ajaxRequest, HandlebarsWrapper, Formatter, cards) {
   var STATE = {
     NOT_USED: 0,
     CONFIRMED: 1,
@@ -24,7 +25,7 @@ require([
   var $popupBookingWrapper = $(".popup_booking_wrapper");
 
   function init() {
-    ajaxRequest("/api/reservations/my", "GET").then(function(data) {
+    ajaxRequest("/api/reservations/my", "GET").then(function (data) {
       setBookingTypeCount(data.typeCounts);
       drawReservations(data.reservations);
       initEvent();
@@ -69,11 +70,11 @@ require([
     }
     typeCounts[STATE.CONFIRMED]--;
     typeCounts[STATE.CANCELED]++;
-    $.each(typeCounts, function(i, v) {
+    $.each(typeCounts, function (i, v) {
       $(".summary_board li.item[data-bk-type='" + i + "'] .figure").text(v);
     });
     $currentCard.find("div.booking_cancel").addClass("hide");
-    if($(cards[STATE.CANCELED].targetTag).hasClass("hide")){
+    if ($(cards[STATE.CANCELED].targetTag).hasClass("hide")) {
       $(cards[STATE.CANCELED].targetTag).removeClass("hide");
     }
     $currentCard.appendTo(cards[STATE.CANCELED].targetTag);
@@ -87,9 +88,9 @@ require([
   function updateBookingState(id, state) {
     ajaxRequest("/api/reservations/" + id, "PUT", JSON.stringify({
       "reservationType": state
-    })).then(function() {
+    })).then(function () {
       console.log("success");
-    }, function() {
+    }, function () {
       console.log("failed");
     });
   }
@@ -113,20 +114,20 @@ require([
     typeCounts[STATE.CONFIRMED] = dataTypeCounts[0] + dataTypeCounts[1];
     typeCounts[STATE.USED] = dataTypeCounts[2];
     typeCounts[STATE.CANCELED] = dataTypeCounts[3];
-    $.each(typeCounts, function(i, v) {
+    $.each(typeCounts, function (i, v) {
       $(".summary_board li.item[data-bk-type='" + i + "'] .figure").text(v);
     });
   }
 
   function drawReservations(dataReservations) {
-    for ( var i in dataReservations ) {
-        if (!dataReservations.hasOwnProperty(i)) {
-          $(".wrap_mylist").addClass("hide");
-          $(".err").removeClass("hide");
-          return;
-        }
+    for (var i in dataReservations) {
+      if (!dataReservations.hasOwnProperty(i)) {
+        $(".wrap_mylist").addClass("hide");
+        $(".err").removeClass("hide");
+        return;
+      }
     }
-    $.map(dataReservations, function(v, i) {
+    $.map(dataReservations, function (v, i) {
       if (v) {
         v.forEach(addExValues);
         $(cards[i].targetTag).removeClass("hide");
